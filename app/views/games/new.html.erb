@@ -1,0 +1,15 @@
+<h1>Games#new</h1>
+<p>New game</p>
+
+<% @letters.each do |letter| %>
+<%= <p>letter</p> %>
+<% end %>
+
+<form action="/score", method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters.join.downcase %>
+  <!-- to pass it to the score method. Controller is killed after New is created so not persisted! -->
+  <!-- we do .join here because HTML i sbetter at handling text' -->
+  <input type="text" name="answer"> <!-- to params -->
+  <input type="submit" value="find longest word!">
+</form>
